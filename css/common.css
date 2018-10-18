@@ -1,0 +1,19 @@
+@import url("reset.css");
+.clearfix:after {content: "";display: block;visibility: hidden;height: 0;clear: both;}
+.clearfix {zoom: 1;}
+/*清除select的默认样式，添加自己的三角图标*/
+select {
+    appearance: none;-moz-appearance: none;-webkit-appearance: none;padding-right: 14px;
+    background: url(../img/icon-right.png) no-repeat right center transparent;background-size: 8px 14px;
+    font-family: "微软雅黑", "microsoft yahei";font-size: 18px;
+}
+select::-ms-expand {display: none;}
+/*强制换行*/
+.noline {word-wrap: break-word;word-break: break-all;}
+/*不换行，以省略号结束*/
+.line {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;word-break: keep-all;font-family: "微软雅黑";}
+ 
+ 
+/*flex盒子*/
+.flex_box {display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;align-items: center;-webkit-align-items: center;}
+.flex1 {-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;}

@@ -1,0 +1,295 @@
+body {
+    background: #EFEFEF;
+    color: black;
+    margin: 0;
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+ol{
+    list-style: none;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.clearfix::after {/*  清除浮动  */
+    clear: both;
+    display: block;
+    content: "";
+}
+.topNavBar {
+    padding: 20px 0px 20px 0px;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;/* fixed定位后会自动缩小 */
+}
+.topNavBar-inner{
+    padding: 0 17px;
+}
+.topNavBar  nav {
+    padding-top: 7px;/* 文字字体小，所以设置内边距居中 */
+    float: right;
+ }
+ .topNavBar  nav > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.topNavBar  nav > ul > li {
+    float: left;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+.topNavBar  nav > ul > li > a {
+    font-size: 12px;
+    color: #b7b7b7;
+    font-weight: bold;
+    border-top: 3px solid transparent;/* 这里是对齐（直接设置一个固定透明的边框，解决hover后li被挤一下） */
+    border-bottom: 3px solid transparent;
+    padding-top: 5px;/* 为了让字与边框之间有空隙 */
+    padding-bottom: 5px;
+    display: block;/* 解决a标签中的元素高度大于li，能把高度撑开 */
+}   
+.topNavBar  nav > ul > li > a:hover {
+    border-bottom: 3px solid #e06567;
+}
+
+.topNavBar .logo {
+    font-size: 24px;
+    font-family: "Arial Black";
+    padding-top: 3px;
+    padding-bottom: 4px;
+    float: left;
+}
+.topNavBar .logo .rs {
+    margin-right: 4px;
+    color: #e6686a;
+}
+.topNavBar .logo .card {
+    color: #9a9da2;
+}
+.banner{
+    height: 515px;
+    background-image: url(./2.jpg);
+    background-position: center center;/* 居中 */
+    background-size: cover;/* 自适应宽度 */
+}
+.banner .mask {
+    height: 515px;
+    background-color:rgba(0,0,0,0.3);
+}
+.userCard {
+    max-width: 940px;
+    margin:-340px auto 0;
+    background: white;
+    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
+}
+.userCard .picture {
+    float: left;
+}
+.userCard .text {
+    float: left;
+    margin-left: 65px;
+}
+.userCard .welcome {
+    background: #e6686a;
+    color: white;
+    padding: 4px 16px;
+    line-height: 22px;
+    display: inline-block;/* 可以让元素不因为padding变大往上走 */
+    position: relative;
+}
+.userCard .welcome .triangle {
+    width: 0;
+    border: 10px solid transparent;
+    border-top-width: 0;
+    border-left-color: #e6686a;
+    position: absolute;
+    top: 100%;
+    left: 4px;
+}
+.userCard .pictureAndText{
+    padding: 50px;
+}
+.userCard .text h1 {
+    margin-top: 28px;
+    font-weight: normal;
+}
+.userCard .text hr {
+    margin: 20px 0;
+    width: 470px;
+    border: none;/* 先把边框干掉再重新设置 */
+    border-top: 1px solid #DEDEDE;
+}
+.userCard dl dt, 
+.userCard dl dd{
+    float: left;
+    padding: 5px 0;
+}
+.userCard dl dt {
+    width: 40%;
+    font-weight: bold;
+}
+.userCard dl dd {
+    width: 60%;
+    color: #9DA0A7;
+}
+footer.media {
+    background: #e06567;
+    text-align: center;
+}
+footer.media > a {
+    display: inline-block;
+    width: 40px;
+    line-height: 30px;
+    padding: 5px 0;/* 居中 */
+    margin: 16px;
+    border-radius: 50%;
+}
+.userCard svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+    vertical-align: top;
+}
+footer.media > a:hover {
+    background:#CF5D5F;
+}
+.resumeDownland-wrapper{
+    text-align: center;
+}
+.resumeDownland{
+    padding: 26px 54px;
+    border: 1px solid #CDCFD1;
+    display: inline-block;/* 必须要让他站一块，不然padding会撑开到上面去 */
+    line-height: 16px;
+    margin:32px 0;
+    transition: all 0.3s;
+    font-weight: bold;
+    color: #3D4455;
+}
+.resumeDownland:hover{
+    box-shadow: 0px 3px 10px 0px rgba(50, 50, 50, 0.54);
+}
+.introductionSelf{
+    max-width: 940px;
+    text-align: center;/* 文字居中 */
+    margin: 0 auto;/* 块居中 */ 
+    line-height: 1.8;
+    font-size: 18px;
+    font-family: kai;
+}
+.skills {
+    max-width: 940px;
+    margin: 55px auto 52px;
+    
+}
+.skills h2 {
+    text-align: center;
+    color: #3D4451;
+    font-size: 34px;
+    margin-bottom: 24px;
+}
+.skills h3 {
+    margin-bottom: 7px;
+    font-weight: normal;
+    font-size: 14px;
+
+}
+.skills ol {
+    padding: 45px 52px 6px;
+    background: white;
+    box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.75);
+}
+.skills li {
+    float: left;
+    width: 48%;
+    margin-bottom: 37px;
+}
+.skills li:nth-child(even) {
+    float: right;
+    width: 48;
+}
+.skills .progressBar{
+    background: #FAE1E1;
+    border-radius: 2px;
+    height: 5px;
+}
+.skills .progress {
+    /* border: 2px solid #E6686A; */
+    /* 这里可以用边框撑起来，上面和下面的高度就不用写了 */ 
+    height: 100%;
+    background: #E6686A;
+    border-radius: 2px;
+}
+.portfolio {
+    max-width: 940px;
+    margin: 0 auto;
+    text-align: center;
+}
+.portfolio h2 {
+    text-align: center;
+    color: #3D4451;
+    font-size: 34px;
+    margin-bottom: 24px;
+}
+.portfolio nav {
+    text-align: center;
+    display: inline-block;
+}
+.portfolio ol {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 5px;
+}
+.portfolio li {
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+  
+}
+.portfolio li:nth-child(1) {
+    margin-left: 0;
+}
+.bar{
+    height: 5px;
+    background: white;
+    border-radius: 2px;
+}
+.bar-inner{
+    height: 100%;
+    background: #E6686A;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+.state-1 .bar-inner {
+    width: 15%;
+}
+.state-2 .bar-inner {
+    width: 18%;
+    margin-left: 70px;
+}
+.state-3 .bar-inner {
+    width: 39%;
+    margin-left: 145px;
+}
+.works {
+    height: 597px;
+    margin-top: 30px;
+    position: relative;
+}
+.works .big {
+    position: absolute;
+}
+.works .small {
+    position: absolute;
+}
