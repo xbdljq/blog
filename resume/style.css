@@ -79,13 +79,13 @@ a {
 }
 .banner{
     height: 515px;
-    background-image: url(./2.jpg);
+    background-image: url(./img/rs-cover.jpg);
     background-position: center center;/* 居中 */
     background-size: cover;/* 自适应宽度 */
 }
 .banner .mask {
     height: 515px;
-    background-color:rgba(0,0,0,0.3);
+    background-color:rgba(0,0,0,0.7);
 }
 .userCard {
     max-width: 940px;
