@@ -6,6 +6,13 @@
     <title>Title</title>
 </head>
 <body>
+    <header>lallalalla</header>
+    <main id="mainCon">
+        <div id="divBox">
+            <kbd>333333333</kbd>
+        </div>
+    </main>
+    <footer></footer>
     我是个页面
     <div id="y"></div>
     <script>
@@ -32,19 +39,24 @@
             'm':'www.mcdonalds.com.cn'
 
         }
+        // var _div = document.createElement("div");
+        // divBox.appendChild(div);
 
         var index = 0,
-        _mian = document.getElementById("y");
+        _mian = document.getElementById("divBox");
         while(index < keys['length']){
             var _div = document.createElement("div");
+            divBox.appendChild(_div);
             var row = keys[index]
             var index2 = 0;
-
-            _mian.appendChild(_div);
             
             while(index2 < row['length']){
                 var _kdb = document.createElement('kdb');
                 _kdb.textContent = row[index2]
+
+                _button = document.createElement('button');
+                _button.textContent = 'e'
+                _kdb.appendChild(_button)
                 _div.appendChild(_kdb);
                 index2 = index + 1
             }
