@@ -49,13 +49,21 @@
             
             var _keyArr= keys[i]
              for(var j = 0;j<_keyArr.length;j++){
-                 var _kbd = document.createElement('kbd');
-                 _kbd.textContent = _keyArr[j];
+                var _kbd = document.createElement('kbd');
+                var _span = document.createElement('span');
+                _span.textContent = _keyArr[j];
+
+                 _kbd.className = "keyStyle"
+                 _kbd.appendChild(_span)
                  _div.appendChild(_kbd);
 
                 var _button = document.createElement('button');
                 _button.textContent = '编辑';
                 _button.id = _keyArr[j];
+
+                var _img = document.createElement('img');
+                _img.src = 'http://'+hash[_keyArr[j]]+'/favicon.ico'
+
                 _button.onclick = function(e){
                     var key = e['target']['id'];
                     var x = prompt('给我一个网址');
@@ -63,7 +71,8 @@
                     localStorage.setItem('uuu',JSON.stringify(hash))
                     console.log(hash)
                 }
-                _kbd.appendChild(_button)    
+                _kbd.appendChild(_button)   
+                _kbd.appendChild(_img)  
 
              }
         }
