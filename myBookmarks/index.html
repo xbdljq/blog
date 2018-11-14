@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Title</title>
+    <title>网址导航页</title>
 </head>
 <body>
-    <header>lallalalla</header>
+    <header></header>
     <main id="mainCon">
-        <div id="divBox">
-            <kbd>333333333</kbd>
-        </div>
+        <div id="divBox" class="divBox"></div>
     </main>
     <footer></footer>
-    我是个页面
-    <div id="y"></div>
     <script>
         var keys = {
             '0':{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
@@ -23,6 +19,7 @@
             'length':3
         }
         var hash = {
+            'b':'baidu.com',
             'q':'qq.com',
             'w':'weibo.com',
             'e':'ele.com',
@@ -39,34 +36,41 @@
             'm':'www.mcdonalds.com.cn'
 
         }
-        // var _div = document.createElement("div");
-        // divBox.appendChild(div);
-
-        var index = 0,
-        _mian = document.getElementById("divBox");
-        while(index < keys['length']){
-            var _div = document.createElement("div");
-            divBox.appendChild(_div);
-            var row = keys[index]
-            var index2 = 0;
+        var hasInlocalSrorage = JSON.parse(localStorage.getItem('uuu') || 'null') 
+       if(hasInlocalSrorage){
+           hash = hasInlocalSrorage;
+       }
+       
+       
+        var _divBox = document.getElementById("divBox")
+        for(var i = 0;i < keys.length;i++ ){
+            var _div = document.createElement("div");           
+            _divBox.appendChild(_div);
             
-            while(index2 < row['length']){
-                var _kdb = document.createElement('kdb');
-                _kdb.textContent = row[index2]
+            var _keyArr= keys[i]
+             for(var j = 0;j<_keyArr.length;j++){
+                 var _kbd = document.createElement('kbd');
+                 _kbd.textContent = _keyArr[j];
+                 _div.appendChild(_kbd);
 
-                _button = document.createElement('button');
-                _button.textContent = 'e'
-                _kdb.appendChild(_button)
-                _div.appendChild(_kdb);
-                index2 = index + 1
-            }
-            index = index + 1;
+                var _button = document.createElement('button');
+                _button.textContent = '编辑';
+                _button.id = _keyArr[j];
+                _button.onclick = function(e){
+                    var key = e['target']['id'];
+                    var x = prompt('给我一个网址');
+                    hash[key] = x;
+                    localStorage.setItem('uuu',JSON.stringify(hash))
+                    console.log(hash)
+                }
+                _kbd.appendChild(_button)    
+
+             }
         }
 
         document.onkeypress = function(e){
             var key = e['key'], website = hash[key]
             console.log(website)
-           // location.href = website;
            window.open('http://'+website,'_blank');
         }
     </script>
