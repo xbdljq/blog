@@ -1,6 +1,10 @@
 *{margin:0;padding: 0;box-sizing: border-box}
 a{text-decoration: none}
-body{height: 100vh}
+body{
+   height: 100vh;
+   background: url(./2.jpg) no-repeat 0 0 transparent;
+   background-size: 100% auto;
+}
 #mainCon{
     display: inline-flex;
     align-items: center;
@@ -25,6 +29,11 @@ kbd >button{
    right: 0;
    bottom: 0;
    display: none; 
+   font-size: 12px;
+   border-radius: 3px;
+   border:1px solid #333;
+   color: #333;
+   background-color: #ffffff;
 }
 kbd:hover > button{
    display: inline-block;
@@ -46,14 +55,14 @@ kbd:hover > button{
    position: relative;
 }
 .keyStyle img{
-    width: 16px;
-    width: 16px;
+    width: 15px;
+    width: 15px;
     position: absolute;
-    left: 4px;
-    bottom:4px;
+    left: 2px;
+    bottom:1px;
 }
 .keyStyle span{
     position: absolute;
-    left: 0;
+    left: 2px;
     top:0;
 }

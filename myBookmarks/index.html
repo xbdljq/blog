@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>网址导航页</title>
 </head>
+
 <body>
     <header></header>
     <main id="mainCon">
@@ -12,76 +14,173 @@
     </main>
     <footer></footer>
     <script>
-        var keys = {
-            '0':{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
-            '1':{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
-            '2':{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
-            'length':3
-        }
-        var hash = {
-            'b':'baidu.com',
-            'q':'qq.com',
-            'w':'weibo.com',
-            'e':'ele.com',
-            'r':'renren.com',
-            't':'tianya.com',
-            'y':'youtube.com',
-            'u':'uc.com',
-            'i':'iqiyi.com',
-            'o':'opera.com',
-            'p':undefined,
-            'a':'acfun.tv',
-            's':'sohucom',
-            'z':'zhihu.com',
-            'm':'www.mcdonalds.com.cn'
+        //初始化数据
+        var hashA = init();
+        var keys = hashA['keys']
+        var hash = hashA['hash']
 
-        }
-        var hasInlocalSrorage = JSON.parse(localStorage.getItem('uuu') || 'null') 
-       if(hasInlocalSrorage){
-           hash = hasInlocalSrorage;
-       }
-       
-       
-        var _divBox = document.getElementById("divBox")
-        for(var i = 0;i < keys.length;i++ ){
-            var _div = document.createElement("div");           
-            _divBox.appendChild(_div);
-            
-            var _keyArr= keys[i]
-             for(var j = 0;j<_keyArr.length;j++){
-                var _kbd = document.createElement('kbd');
-                var _span = document.createElement('span');
-                _span.textContent = _keyArr[j];
+        //创建键盘Dom元素
+        createKeyDom()
 
-                 _kbd.className = "keyStyle"
-                 _kbd.appendChild(_span)
-                 _div.appendChild(_kbd);
 
-                var _button = document.createElement('button');
-                _button.textContent = '编辑';
-                _button.id = _keyArr[j];
-
-                var _img = document.createElement('img');
-                _img.src = 'http://'+hash[_keyArr[j]]+'/favicon.ico'
-
-                _button.onclick = function(e){
-                    var key = e['target']['id'];
-                    var x = prompt('给我一个网址');
-                    hash[key] = x;
-                    localStorage.setItem('uuu',JSON.stringify(hash))
-                    console.log(hash)
-                }
-                _kbd.appendChild(_button)   
-                _kbd.appendChild(_img)  
-
-             }
-        }
-
-        document.onkeypress = function(e){
-            var key = e['key'], website = hash[key]
+        //键盘监听事件
+        document.onkeypress = function (e) {
+            var key = e['key'],
+                website = hash[key]
             console.log(website)
-           window.open('http://'+website,'_blank');
+            window.open('http://' + website, '_blank');
+        }
+
+        function createKeyDom() {
+            var _divBox = document.getElementById("divBox")
+            for (var i = 0; i < keys.length; i++) {
+                var _div = createDom("div");
+                _divBox.appendChild(_div);
+
+                var _keyArr = keys[i]
+                for (var j = 0; j < _keyArr.length; j++) {
+                    var _kbd = createDom('kbd', {
+                        className: "keyStyle"
+                    });
+                    var _span = createDom('span');
+                    _span.textContent = _keyArr[j];
+
+                    _kbd.appendChild(_span)
+                    _div.appendChild(_kbd);
+
+                    var _img = createDom('img');
+                    setImgSrc(_img, hash[_keyArr[j]], _keyArr[j])
+
+
+                    var _button = createDom('button', {
+                        id: _keyArr[j]
+                    });
+                    _button.textContent = '编辑';
+
+                    _button.onclick = function (e) {
+                        var img2 = e['target'].previousSibling; //获取上一个元素
+                        var key = e['target']['id'];
+                        var x = prompt('给我一个网址');
+
+                        hash[key] = x;
+                        setImgSrc(img2, hash[key], key)
+
+                        localStorage.setItem('uuu', JSON.stringify(hash))
+                        console.log(hash)
+                    }
+                    _kbd.appendChild(_img)
+                    _kbd.appendChild(_button)
+
+
+                }
+            }
+
+        }
+
+        function createDom(pram, attributes) {
+            var element = document.createElement(pram)
+            for (var key in attributes) {
+                element[key] = attributes[key]
+            }
+            return element;
+        }
+
+        function edit(e) {
+            var button2 = e['target']
+            var img2 = button2.previousSibling; //获取上一个元素
+            var key = e['target']['id'];
+            var x = prompt('给我一个网址');
+            hash[key] = x;
+            setImgSrc(img2, hash[key], key)
+
+            localStorage.setItem('uuu', JSON.stringify(hash))
+            console.log(hash)
+        }
+
+        function setImgSrc(dom, pram1, pram2) {
+            if (pram1) {
+                if (pram2 == 'q') {
+                    dom.src = '//mat1.gtimg.com/www/icon/favicon2.ico'
+                } else if (pram2 == 's') {
+                    dom.src = '//statics.itc.cn/web/static/images/pic/sohu-logo/favicon.ico'
+                } else {
+                    dom.src = '//' + pram1 + '/favicon.ico'
+                }
+
+            } else {
+                dom.src = '//wx4.sinaimg.cn/mw690/ea0616a7gy1fx8rql6chzj205k05kt8n.jpg'
+            }
+            dom.onerror = function (e) {
+                e.target.src = '//wx4.sinaimg.cn/mw690/ea0616a7gy1fx8rql6chzj205k05kt8n.jpg'
+            }
+        }
+
+        function init() {
+            var keys = {
+                '0': {
+                    0: 'q',
+                    1: 'w',
+                    2: 'e',
+                    3: 'r',
+                    4: 't',
+                    5: 'y',
+                    6: 'u',
+                    7: 'i',
+                    8: 'o',
+                    9: 'p',
+                    length: 10
+                },
+                '1': {
+                    0: 'a',
+                    1: 's',
+                    2: 'd',
+                    3: 'f',
+                    4: 'g',
+                    5: 'h',
+                    6: 'j',
+                    7: 'k',
+                    8: 'l',
+                    length: 9
+                },
+                '2': {
+                    0: 'z',
+                    1: 'x',
+                    2: 'c',
+                    3: 'v',
+                    4: 'b',
+                    5: 'n',
+                    6: 'm',
+                    length: 7
+                },
+                'length': 3
+            }
+            var hash = {
+                'b': 'baidu.com',
+                'q': 'qq.com',
+                'w': 'weibo.com',
+                'r': 'runjs.cn',
+                't': 'taobao.com',
+                'y': 'yy.com',
+                'u': 'uc.cn',
+                'i': 'iqiyi.com',
+                'o': 'opera.com',
+                'p': undefined,
+                'a': 'apple.com',
+                's': 'sohu.com',
+                'z': 'zhaopin.com',
+                'm': 'www.mcdonalds.com.cn'
+
+            }
+            var hasInlocalSrorage = JSON.parse(localStorage.getItem('uuu') || 'null')
+            if (hasInlocalSrorage) {
+                hash = hasInlocalSrorage;
+            }
+            return {
+                "keys": keys,
+                "hash": hash
+            }
         }
     </script>
 </body>
+
 </html>
