@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding；0
+  }
+  
+  #canvas {
+    background: yellowgreen;
+    display: block
+  }
+  
+  .div1 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    color: red;
+  }
+  .div1 #brush{
+    display:none;
+  }
+  .div1.x #brush{
+    display:inline-block
+  }
+  .div1.x #eraser{
+    display:none
+  }
+  
