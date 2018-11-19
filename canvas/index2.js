@@ -24,9 +24,25 @@ function listenToMouse(canvar, context) {
     x: undefined,
     y: undefined
   }
-  
+  //特性检测
+  if(document.body.ontouchstart !== undefined){
+    //触屏设备
+    canvar.ontouchstart = function(){
+      //开始触摸了
+      console.log(111)
+    }
+    canvar.ontouchmove = function(){
+      //边触摸边动
+      console.log(222)
+    }
+    canvar.ontouchend = function(){
+      //触摸完了
+      console.log(333)
+    }
 
-  //鼠标按下事件
+  }else{
+    //非触屏设备
+    //鼠标按下事件
   canvar.onmousedown = function(e) {
     var x = e.clientX;
     var y = e.clientY;
@@ -67,6 +83,13 @@ function listenToMouse(canvar, context) {
   canvar.onmouseup = function(e) {
     using = false;
   }
+
+  }
+  
+
+  
+
+  
  
 }
 
