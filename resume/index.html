@@ -5,54 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <link rel="stylesheet" href="style.css">
-	<script src="//at.alicdn.com/t/font_878869_hrhh6p7a0d.js"></script>
+    <!-- //<script src="//at.alicdn.com/t/font_878869_hrhh6p7a0d.js"></script> -->
     <title>姚小渔的简历</title>
     <style type="text/css">
-    .icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
-    .site-welcome{
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #888888;
-        z-index: 1;
-        justify-content: center;
-        align-items: center;
-    }
-    .site-welcome.active{
-        display: flex;
-    }
-</style>
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .site-welcome {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #888888;
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .site-welcome.active {
+            display: flex;
+        }
+    </style>
 </head>
 
 
 <body>
     <div id="siteWelcome" class="site-welcome active">
-            <div class="loading"></div>
+        <div class="loading"></div>
     </div>
-        
-    <div class="topNavBar">
-        
+
+    <div id="topNavBar" class="topNavBar">
+
         <div class="topNavBar-inner clearfix">
             <a href="#" class="logo">
                 <span class="rs">RS</span>
                 <span class="card">card</span>
             </a>
             <nav>
-                <ul class="clearfix">
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">技能</a></li>
-                    <li><a href="#">作品</a></li>
-                    <li><a href="#">博客</a></li>
+                <ul class="menu" class="clearfix">
+                    <li><a href="#siteAbout">关于</a></li>
+                    <li><a href="#siteSkills">技能</a></li>
+                    <li class="menuTigger">
+                        <a href="#siteWorks">作品</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="menuTigger">
+                        <a href="#">博客</a>
+                        <ul class="submenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
                     <li><a href="#">日历</a></li>
                     <li><a href="#">联系方式</a></li>
                     <li><a href="#">其他</a></li>
@@ -68,7 +85,7 @@
 
     <!-- 个人介绍卡片 -->
     <main>
-        <div class="userCard">
+        <div id="siteAbout" class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="img/1.jpeg" alt="头像" width="299" height="347">
@@ -96,19 +113,19 @@
             <footer class="media">
                 <a href="#">
                     <svg class="icon" aria-hidden="true">
-    					<use xlink:href="#icon-github"></use>
-					</svg>
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
                 </a>
                 <a href="#">
-                   <svg class="icon" aria-hidden="true">
-    					<use xlink:href="#icon-jianshu"></use>
-					</svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
                 </a>
                 </a>
                 <a href="#">
-                  <svg class="icon" aria-hidden="true">
-    					<use xlink:href="#icon-qq"></use>
-					</svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
                 </a>
                 </a>
             </footer>
@@ -121,7 +138,7 @@
         </p>
     </main>
 
-    <section class="skills">
+    <section id="siteSkills" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -163,11 +180,11 @@
         </ol>
     </section>
 
-    <section class="portfolio">
+    <section id="siteWorks" class="portfolio">
         <h2>作品集</h2>
 
-        
-        
+
+
         <nav>
             <ol class="clearfix">
                 <li id="portfolio1">所有</li>
@@ -190,18 +207,96 @@
             </div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script>
-   portfolio1.onclick= function(){  
-        portfolioBar.className = 'bar state-1'
-    }
-    portfolio2.onclick= function(){
-        portfolioBar.className = 'bar state-2'
-    }
-    portfolio3.onclick= function(){
-        portfolioBar.className = 'bar state-3'
-    }
-    siteWelcome.classList.remove('active');
-</script>
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        window.onload = function () {
+            portfolio1.onclick = function () {
+                portfolioBar.className = 'bar state-1'
+            }
+            portfolio2.onclick = function () {
+                portfolioBar.className = 'bar state-2'
+            }
+            portfolio3.onclick = function () {
+                portfolioBar.className = 'bar state-3'
+            }
+            setTimeout(function () {
+                siteWelcome.classList.remove('active');
+            }, 300)
+            //鼠标滚动事件
+            window.onscroll = function (e) {
+                console.log(window.scrollY)
+                if (window.scrollY > 0) {
+                    topNavBar.classList.add('sticky')
+                } else {
+                    topNavBar.classList.remove('sticky')
+                }
+            }
+            //let liTags = document.querySelectorAll('nav .menu > ul > li');
+            let liTags = document.querySelectorAll('nav>.menu>li');
+            console.log(liTags)
+            for (let i = 0; i < liTags.length; i++) {
+                liTags[i].onmouseenter = function (e) {
+                    e.currentTarget.classList.add('active')
+                }
+                liTags[i].onmouseleave = function (e) {
+                    e.currentTarget.classList.remove('active')
+                }
+            }
+
+            let aTags = document.querySelectorAll("nav .menu >li>a");
+            console.log(aTags)
+            for (let i = 0; i < aTags.length; i++) {
+                aTags[i].onclick = function (e) {
+                    debugger;
+                    e.preventDefault();
+                    let a = e.currentTarget
+                    let href = a.getAttribute('href') //'#siteAbout'
+                    let element = document.querySelector(href);
+                    let top = element.offsetTop;
+                    // window.scrollTo(0, top - 80)
+
+
+
+                    // let n = 25; //一共动多少次
+                    // let duration = 500 / n; //多少时间动一次
+                     let currenTop = window.scrollY;
+                     let targetTop = top - 80;
+                    
+                    // let distance = (targetTop - currenTop) / n;
+                    // let i = 0;
+                    // let id = setInterval(function () {
+                    //     if (i === n) {
+                    //         window.clearInterval(id)
+                    //         return
+                    //     }
+                    //     i++;
+                    //     window.scrollTo(0, currenTop + distance * i)
+                    // }, duration)
+                    let s = targetTop - currenTop
+                    var t = Math.abs((s/100)*300);
+                    if(t > 500){
+                        t = 500;
+                    }
+                    var coords = { y: currenTop }; // Start at (0, 0)
+                    var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                        .to({y: targetTop}, t) // Move to (300, 200) in 1 second.
+                        .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+                        .onUpdate(function () { // Called after tween.js updates 'coords'.
+                            window.scrollTo(0, coords.y)
+                            //box.style.setProperty('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
+                        })
+                        .start(); 
+
+                }
+            }
+        }
+    </script>
 
 </body>
 

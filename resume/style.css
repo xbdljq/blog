@@ -3,22 +3,57 @@ body {background: #EFEFEF;color: black;margin: 0;}
 .icon {width: 1em; height: 1em;vertical-align: -0.15em; fill: currentColor;overflow: hidden;}
 a {color: inherit;text-decoration: none;}
 
-.topNavBar {padding: 20px 0px 20px 0px;position: fixed;top:0;left: 0;width: 100%;/* fixed定位后会自动缩小 */}
-.topNavBar-inner{padding: 0 17px;}
+.topNavBar {
+    padding: 20px 0px 20px 0px;position: fixed;top:0;left: 0;width: 100%;
+    transform: all 0.5s;color: #b7b7b7;
+}
+.topNavBar.sticky{
+    background: #ffffff;padding: 10px 0;z-index: 2;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);color: #333333;
+}
+.topNavBar-inner{padding: 0 16px;}
 .topNavBar  nav {padding-top: 7px;/* 文字字体小，所以设置内边距居中 */float: right;}
 .topNavBar  nav > ul {list-style: none;margin: 0;padding: 0;}
-.topNavBar  nav > ul > li {float: left;margin-left: 17px;margin-right: 17px;}
+.topNavBar  nav > ul > li {
+    float: left;margin-left: 17px;margin-right: 17px;position: relative;
+}
 .topNavBar  nav > ul > li > a {
-    font-size: 12px;
-    color: #b7b7b7;
-    font-weight: bold;
+    font-size: 12px;color: inherit;font-weight: bold;
     border-top: 3px solid transparent;/* 这里是对齐（直接设置一个固定透明的边框，解决hover后li被挤一下） */
-    border-bottom: 3px solid transparent;
-    padding-top: 5px;/* 为了让字与边框之间有空隙 */
-    padding-bottom: 5px;
-    display: block;/* 解决a标签中的元素高度大于li，能把高度撑开 */
+    border-bottom: 3px solid transparent;padding-top: 5px;padding-bottom: 5px;
+    display: block;position: relative;
 }   
-.topNavBar  nav > ul > li > a:hover {border-bottom: 3px solid #e06567;}
+/* .topNavBar  nav > ul > li > a:hover {border-bottom: 3px solid #e06567;} */
+.topNavBar  nav > ul > li.active > a::after{
+    content: '';display: ruby;position: absolute;top: 100%;left: 0;
+    width: 100%;background: #e06567;height: 3px;
+    animation: menuSlide .3s;
+}
+@keyframes menuSlide{
+    0%{ width: 0;}
+    100%{width: 100%}
+}
+.topNavBar .submenu{
+    display: none;position: absolute;right: 0;top:100%;
+    background: #ffffff;color: #3d4451;font-size: 14px;
+}
+.topNavBar li.active >.submenu{
+    display: block;
+    animation: submenuSlider .3s;
+}
+@keyframes submenuSlider{
+    0%{
+        margin-right: 100%;
+    }
+    100%{
+        margin-right: 0%;
+    }
+}
+.topNavBar .submenu>li{
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+
 .topNavBar .logo {font-size: 24px;font-family: "Arial Black";padding-top: 3px;padding-bottom: 4px;float: left;}
 .topNavBar .logo .rs {margin-right: 4px;color: #e6686a;}
 .topNavBar .logo .card {color: #9a9da2;}
@@ -30,29 +65,19 @@ a {color: inherit;text-decoration: none;}
 }
 .banner .mask {height: 515px;background-color:rgba(0,0,0,0.7);}
 .userCard {
-    max-width: 940px;
-    margin:-340px auto 0;
-    background: white;
+    max-width: 940px;margin:-340px auto 0;background: white;
     box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
 }
 .userCard .picture {float: left;}
 .userCard .text {float: left;margin-left: 65px;}
 .userCard .welcome {
-    background: #e6686a;
-    color: white;
-    padding: 4px 16px;
-    line-height: 22px;
+    background: #e6686a;color: white;padding: 4px 16px;line-height: 22px;
     display: inline-block;/* 可以让元素不因为padding变大往上走 */
     position: relative;
 }
 .userCard .welcome .triangle {
-    width: 0;
-    border: 10px solid transparent;
-    border-top-width: 0;
-    border-left-color: #e6686a;
-    position: absolute;
-    top: 100%;
-    left: 4px;
+    width: 0;border: 10px solid transparent;border-top-width: 0;border-left-color: #e6686a;
+    position: absolute;top: 100%;left: 4px;
 }
 .userCard .pictureAndText{padding: 50px;}
 .userCard .text h1 {margin-top: 28px;font-weight: normal;}
@@ -62,25 +87,15 @@ a {color: inherit;text-decoration: none;}
 .userCard dl dd {width: 60%;color: #9DA0A7;}
 footer.media {background: #e06567;text-align: center;}
 footer.media > a {
-    display: inline-block;
-    width: 40px;
-    line-height: 30px;
-    padding: 5px 0;/* 居中 */
-    margin: 16px;
-    border-radius: 50%;
+    display: inline-block;width: 40px;line-height: 30px;padding: 5px 0;/* 居中 */
+    margin: 16px;border-radius: 50%;
 }
 .userCard svg {width: 30px;height: 30px;fill: white;vertical-align: top;}
 footer.media > a:hover {background:#CF5D5F;}
 .resumeDownland-wrapper{text-align: center;}
 .resumeDownland{
-    padding: 26px 54px;
-    border: 1px solid #CDCFD1;
-    display: inline-block;/* 必须要让他站一块，不然padding会撑开到上面去 */
-    line-height: 16px;
-    margin:32px 0;
-    transition: all 0.3s;
-    font-weight: bold;
-    color: #3D4455;
+    padding: 26px 54px;border: 1px solid #CDCFD1;display: inline-block;line-height: 16px;
+    margin:32px 0;transition: all 0.3s;font-weight: bold;color: #3D4455;
 }
 .resumeDownland:hover{box-shadow: 0px 3px 10px 0px rgba(50, 50, 50, 0.54);}
 .introductionSelf{max-width: 940px; text-align: center; margin: 0 auto; line-height: 1.8;font-size: 18px;font-family: kai;}
