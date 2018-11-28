@@ -3,6 +3,26 @@ body {background: #EFEFEF;color: black;margin: 0;}
 .icon {width: 1em; height: 1em;vertical-align: -0.15em; fill: currentColor;overflow: hidden;}
 a {color: inherit;text-decoration: none;}
 
+
+[data-x].offset{
+    transform: translateY(100px)
+}
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+[data-x].animate{
+    animation: slideUp 0.5s;
+}
+@keyframes slideUp{
+    0%{
+        transform:translateY(-30px)
+    }
+    100%{
+        transform:translateY(0)
+    }
+}
+
 .topNavBar {
     padding: 20px 0px 20px 0px;position: fixed;top:0;left: 0;width: 100%;
     transform: all 0.5s;color: #b7b7b7;
@@ -24,7 +44,8 @@ a {color: inherit;text-decoration: none;}
     display: block;position: relative;
 }   
 /* .topNavBar  nav > ul > li > a:hover {border-bottom: 3px solid #e06567;} */
-.topNavBar  nav > ul > li.active > a::after{
+.topNavBar  nav > ul > li.active > a::after,
+.topNavBar  nav > ul > li.highlight > a::after{
     content: '';display: ruby;position: absolute;top: 100%;left: 0;
     width: 100%;background: #e06567;height: 3px;
     animation: menuSlide .3s;
@@ -105,8 +126,14 @@ footer.media > a:hover {background:#CF5D5F;}
 .skills ol {padding: 45px 52px 6px;background: white;box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.75);}
 .skills li {float: left; width: 48%;margin-bottom: 37px;}
 .skills li:nth-child(even) {float: right;width: 48;}
-.skills .progressBar{background: #FAE1E1;border-radius: 2px;height: 5px;}
-.skills .progress {height: 100%;background: #E6686A;border-radius: 2px;}
+.skills .progressBar{background: #FAE1E1;border-radius: 2px;height: 5px;overflow: hidden;}
+.skills .progress {
+    height: 100%;background: #E6686A;border-radius: 2px;
+    transform: translateX(0);transition: all 1s;
+}
+section.skills.offset .progress{
+    transform: translateX(-100%)
+}
 
 .portfolio {max-width: 940px;margin: 0 auto;text-align: center;}
 .portfolio h2 {text-align: center;color: #3D4451;font-size: 34px;margin-bottom: 24px;}
