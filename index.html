@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <div>我是个html文44444件</div>
+    <script>
+        var html = {
+            Name: 'Object',
+            Success: function () {
+                this.Say = function () {
+                    alert("Hello,world");
+                };
+                alert("Obj Success");
+            }
+        }
+        console.log(html.Name)
+        var d = new html.Success();
+        console.log(d.Say)
+    </script>
 </body>
+
 </html>
