@@ -5,36 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./../../src/css/common.css" />
     <link rel="stylesheet" href="style.css">
     <!-- //<script src="//at.alicdn.com/t/font_878869_hrhh6p7a0d.js"></script> -->
+    <link rel="stylesheet" href="./../../node_modules//swiper/dist/css/swiper.min.css">
+    <script src="./../../node_modules/swiper/dist/js/swiper.min.js"></script>
     <title>姚小渔的简历</title>
-    <style type="text/css">
-        .icon {
-            width: 1em;
-            height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-        }
-
-        .site-welcome {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #888888;
-            z-index: 1;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .site-welcome.active {
-            display: flex;
-        }
-    </style>
 </head>
 
 
@@ -79,12 +55,16 @@
     </div>
     <!-- 背景图 -->
     <div class="banner">
+          
+        
         <!-- 遮罩层 -->
         <div class="mask"></div>
     </div>
 
     <!-- 个人介绍卡片 -->
     <main>
+       
+
         <div data-x id="siteAbout" class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
@@ -182,10 +162,40 @@
 
     <section data-x id="siteWorks" class="portfolio">
         <h2>作品集</h2>
+        <!-- <nav>
+                <ol class="clearfix">
+                    <li id="portfolio1">所有</li>
+                    <li id="portfolio2">框架</li>
+                    <li id="portfolio3">原生JS&CSS</li>
+                </ol>
+                <div id="portfolioBar" class="bar state-1">
+                    <div class="bar-inner"></div>
+                </div>
+            </nav> -->
+
+            <!-- 轮播图 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img src="img/3.jpg" alt="" class="swiper-slide">
+                    <img src="img/4.jpg" alt="" class="swiper-slide">
+                    <img src="img/5.jpg" alt="" class="swiper-slide">
+                    <!-- <div class="swiper-slide" style="background:red">Slide 1</div>
+                    <div class="swiper-slide" style="background:blue">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div> -->
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+    
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+    
+                <!-- 如果需要滚动条 -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
 
 
-
-        <nav>
+        <!-- <nav>
             <ol class="clearfix">
                 <li id="portfolio1">所有</li>
                 <li id="portfolio2">框架</li>
@@ -205,9 +215,32 @@
             <div class="small" style="left:645px; top:312px;">
                 <img src="img/5.jpg" alt="作品3">
             </div>
-        </div>
+        </div> -->
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    <script src="./main.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+           // direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            // scrollbar: {
+            //     el: '.swiper-scrollbar',
+            // },
+        })
+    </script>
     <script>
         function animate(time) {
             requestAnimationFrame(animate);
@@ -216,15 +249,15 @@
         requestAnimationFrame(animate);
 
         window.onload = function () {
-            portfolio1.onclick = function () {
-                portfolioBar.className = 'bar state-1'
-            }
-            portfolio2.onclick = function () {
-                portfolioBar.className = 'bar state-2'
-            }
-            portfolio3.onclick = function () {
-                portfolioBar.className = 'bar state-3'
-            }
+            // portfolio1.onclick = function () {
+            //     portfolioBar.className = 'bar state-1'
+            // }
+            // portfolio2.onclick = function () {
+            //     portfolioBar.className = 'bar state-2'
+            // }
+            // portfolio3.onclick = function () {
+            //     portfolioBar.className = 'bar state-3'
+            // }
             setTimeout(function () {
                 siteWelcome.classList.remove('active');
             }, 300)
@@ -237,9 +270,9 @@
             for (let i = 0; i < specialTags.length; i++) {
                 specialTags[i].classList.add('offset')
             }
-            setTimeout(function(){
+            setTimeout(function () {
                 fun1();
-            },1000)
+            }, 1000)
             window.onscroll = function (e) {
                 if (window.scrollY > 0) {
                     topNavBar.classList.add('sticky')
