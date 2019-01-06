@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/xbdljq/blog#readme",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "swiper": "^4.4.6"
   },
   "devDependencies": {}
 }
