@@ -1,0 +1,150 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+*::after,*::before{box-sizing: border-box;}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.code-wrapper{
+    flex: 1;
+    height: 50%;
+}
+.preview-wrapper{
+    flex: 1;
+    height: 50%;
+}
+.preview{
+    border:1px solid green;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffdc2b;
+}
+.wrapper{
+    width: 100%;
+    height: 165px;
+    position: relative;
+    
+}
+.wrapper>:not(:last-child){
+    z-index: 1;
+}
+
+/* 画个鼻子 */
+.nose{
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-top-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    transform: translateX(-50%)
+}
+/* 画眼睛 */
+.eye{
+    width: 49px;
+    height: 49px;
+    background: #2e2e2e;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+.eye::before{
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 6px;
+    top: -1px;
+    border: 1px solid #000;
+}
+.eye.left{
+    right: 50%;
+    margin-right: 90px;
+}
+.eye.right{
+    left: 50%;
+    margin-left: 90px;
+}
+/* 画个脸颊 */
+.face{
+    width: 68px;
+    height: 68px;
+    background: #fc3d1c;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 85px;
+}
+.face.left{
+    right: 50%;
+    margin-right: 120px;
+}
+.face.right{
+    left: 50%;
+    margin-left: 120px;
+}
+/* 画个上嘴唇 */
+.upperLip{
+    height: 30px;
+    width: 90px;
+    border: 3px solid #000;
+    position: absolute;
+    top: 52px;
+    background: #ffdc2b;
+    /* background: red; */
+}
+.upperLip.left{
+    right: 50%;
+    border-bottom-left-radius: 48px 28px;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-18deg);
+}
+.upperLip.right{
+    left: 50%;
+    border-bottom-right-radius: 48px 28px;
+    border-top: none;
+    border-left: none;
+    transform: rotate(18deg);
+}
+/* 画个下嘴唇 */
+.lowerLip-wrapper{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -100px;
+    height: 102px;
+    width: 200px;
+    overflow: hidden;
+}
+.lowerLip{
+    border: 2px solid #000;
+    width: 200px;
+    height: 1000px;
+    background: #a81414;
+    border-radius: 208px/1000px;
+    position: absolute;
+    left:0;
+    bottom: 0;
+    overflow: hidden;
+    
+
+}
+.lowerLip::after{
+    content: '';
+    width: 100px;
+    height: 80px;
+    background: #fc4a62;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left:-50px;
+}

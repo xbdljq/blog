@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "#### 网址导航网页",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xbdljq/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xbdljq/blog/issues"
+  },
+  "homepage": "https://github.com/xbdljq/blog#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
