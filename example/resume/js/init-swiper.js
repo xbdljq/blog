@@ -1,23 +1,30 @@
 !function(){
-    var mySwiper = new Swiper('.swiper-container', {
-        // direction: 'vertical', // 垂直切换选项
-         loop: true, // 循环模式选项
+    var view = document.querySelector('#mySlides')
+    var container = {
+        view:null,
+        swiper:null,
+        swiperOptions :{
+            loop: true, // 循环模式选项    
+            pagination: {
+                el: '.swiper-pagination',
+            },    
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        },
+        init:function(view){
+            this.view = view
+            this.initSwiper()
+        },
+        initSwiper:function(){
+            this.swiper = new Swiper(
+                view.querySelector('.swiper-container'), 
+                this.swiperOptions
+            )
+        }
+    }
+    container.init(view)
     
-         // 如果需要分页器
-         pagination: {
-             el: '.swiper-pagination',
-         },
-    
-         // 如果需要前进后退按钮
-         navigation: {
-             nextEl: '.swiper-button-next',
-             prevEl: '.swiper-button-prev',
-         },
-    
-         // 如果需要滚动条
-         // scrollbar: {
-         //     el: '.swiper-scrollbar',
-         // },
-     })
 }.call()
 
