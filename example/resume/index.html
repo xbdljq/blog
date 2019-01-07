@@ -162,127 +162,45 @@
 
     <section data-x id="siteWorks" class="portfolio">
         <h2>作品集</h2>
-        <!-- <nav>
-                <ol class="clearfix">
-                    <li id="portfolio1">所有</li>
-                    <li id="portfolio2">框架</li>
-                    <li id="portfolio3">原生JS&CSS</li>
-                </ol>
-                <div id="portfolioBar" class="bar state-1">
-                    <div class="bar-inner"></div>
+        <div id="mySlides">
+             <!-- 轮播图 -->
+             <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <img src="img/3.jpg" alt="" class="swiper-slide">
+                        <img src="img/4.jpg" alt="" class="swiper-slide">
+                        <img src="img/5.jpg" alt="" class="swiper-slide">
+                        <!-- <div class="swiper-slide" style="background:red">Slide 1</div>
+                        <div class="swiper-slide" style="background:blue">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div> -->
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+        
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+        
+                    <!-- 如果需要滚动条 -->
+                    <!-- <div class="swiper-scrollbar"></div> -->
                 </div>
-            </nav> -->
 
-            <!-- 轮播图 -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <img src="img/3.jpg" alt="" class="swiper-slide">
-                    <img src="img/4.jpg" alt="" class="swiper-slide">
-                    <img src="img/5.jpg" alt="" class="swiper-slide">
-                    <!-- <div class="swiper-slide" style="background:red">Slide 1</div>
-                    <div class="swiper-slide" style="background:blue">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div> -->
-                </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-    
-                <!-- 如果需要导航按钮 -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-    
-                <!-- 如果需要滚动条 -->
-                <!-- <div class="swiper-scrollbar"></div> -->
-            </div>
+        </div>
 
-
-        <!-- <nav>
-            <ol class="clearfix">
-                <li id="portfolio1">所有</li>
-                <li id="portfolio2">框架</li>
-                <li id="portfolio3">原生JS&CSS</li>
-            </ol>
-            <div id="portfolioBar" class="bar state-1">
-                <div class="bar-inner"></div>
-            </div>
-        </nav>
-        <div class="works clearfix">
-            <div class="big" style="left:0; top:0;">
-                <img src="img/3.jpg" alt="作品1">
-            </div>
-            <div class="small" style="left:645px; top:0px;">
-                <img src="img/4.jpg" alt="作品2">
-            </div>
-            <div class="small" style="left:645px; top:312px;">
-                <img src="img/5.jpg" alt="作品3">
-            </div>
-        </div> -->
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-    <script src="./main.js"></script>
+    <script src="./js/main.js"></script>
+   <script src="./js/init-swiper.js"></script>
+   <script src="./js/auto-slide-up.js"></script>
+   <script src="./js/sticky-topbar.js"></script>
+   <script src="./js/smoothly-navigation.js"></script>
     <script>
-        var mySwiper = new Swiper('.swiper-container', {
-           // direction: 'vertical', // 垂直切换选项
-            loop: true, // 循环模式选项
-
-            // 如果需要分页器
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // 如果需要前进后退按钮
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // 如果需要滚动条
-            // scrollbar: {
-            //     el: '.swiper-scrollbar',
-            // },
-        })
-    </script>
-    <script>
-        function animate(time) {
-            requestAnimationFrame(animate);
-            TWEEN.update(time);
-        }
-        requestAnimationFrame(animate);
+        
 
         window.onload = function () {
-            // portfolio1.onclick = function () {
-            //     portfolioBar.className = 'bar state-1'
-            // }
-            // portfolio2.onclick = function () {
-            //     portfolioBar.className = 'bar state-2'
-            // }
-            // portfolio3.onclick = function () {
-            //     portfolioBar.className = 'bar state-3'
-            // }
             setTimeout(function () {
                 siteWelcome.classList.remove('active');
             }, 300)
             //鼠标滚动事件
-
-
-
-            //添加offser类
-            let specialTags = document.querySelectorAll('[data-x]')
-            for (let i = 0; i < specialTags.length; i++) {
-                specialTags[i].classList.add('offset')
-            }
-            setTimeout(function () {
-                fun1();
-            }, 1000)
-            window.onscroll = function (e) {
-                if (window.scrollY > 0) {
-                    topNavBar.classList.add('sticky')
-                } else {
-                    topNavBar.classList.remove('sticky')
-                }
-                // debugger;
-                fun1()
-
-            }
             let liTags = document.querySelectorAll('nav>.menu>li');
             for (let i = 0; i < liTags.length; i++) {
                 liTags[i].onmouseenter = function (e) {
@@ -292,66 +210,9 @@
                     e.currentTarget.classList.remove('active')
                 }
             }
-
-            let aTags = document.querySelectorAll("nav .menu >li>a");
-            for (let i = 0; i < aTags.length; i++) {
-                aTags[i].onclick = function (e) {
-                    e.preventDefault();
-                    let a = e.currentTarget
-                    let href = a.getAttribute('href') //'#siteAbout'
-                    let element = document.querySelector(href);
-                    let top = element.offsetTop;
-
-                    let currenTop = window.scrollY;
-                    let targetTop = top - 80;
-
-                    let s = targetTop - currenTop
-                    var t = Math.abs((s / 100) * 300);
-                    if (t > 500) {
-                        t = 500;
-                    }
-                    var coords = {
-                        y: currenTop
-                    }; // Start at (0, 0)
-                    var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
-                        .to({
-                            y: targetTop
-                        }, t) // Move to (300, 200) in 1 second.
-                        .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
-                        .onUpdate(function () { // Called after tween.js updates 'coords'.
-                            window.scrollTo(0, coords.y)
-                            //box.style.setProperty('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
-                        })
-                        .start();
-
-                }
-            }
         }
 
-        function fun1() {
-            let specialTags = document.querySelectorAll('[data-x]')
-            let minIndex = 0; //窗口离顶部最近的元素             
-            for (let i = 1; i < specialTags.length; i++) {
-                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop -
-                        window.scrollY)) {
-                    minIndex = i
-                }
-            }
-            for (let i = 0; i < specialTags.length; i++) {
-                specialTags[i].classList.remove('active')
-            }
-            specialTags[minIndex].classList.add('active');
-
-            specialTags[minIndex].classList.remove('offset')
-            let id = specialTags[minIndex].id;
-            let _a = document.querySelector('a[href="#' + id + '"]');
-            let li = _a.parentNode;
-            let brothersAndMe = li.parentNode.children;
-            for (let i = 0; i < brothersAndMe.length; i++) {
-                brothersAndMe[i].classList.remove('highlight')
-            }
-            li.classList.add('highlight')
-        }
+        
     </script>
 
 </body>
