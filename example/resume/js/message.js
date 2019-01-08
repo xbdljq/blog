@@ -1,49 +1,79 @@
-var APP_ID = 'eDqGohBQy4CqEWc5fRzxak4B-gzGzoHsz';
-var APP_KEY = 'dVTa6fj8CFxjnkfleC9LnM0P';
+! function () {
+  var view = document.querySelector('section.message')
+  var model = {
+    init: function () {
+      var APP_ID = 'eDqGohBQy4CqEWc5fRzxak4B-gzGzoHsz';
+      var APP_KEY = 'dVTa6fj8CFxjnkfleC9LnM0P';
+      AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+      });
+    },
+    fetch:function(){
+      var query = new AV.Query('Messages');
+      return query.find();
+    },
+    save:function(name,content){
+      var Message = AV.Object.extend('Messages');
+      var message = new Message();
+      return message.save({   //promise对象
+        name:name,
+        content:content
+      })
+    }
+  }
+  var controller = {
+    view: null,
+    model:null,
+    messageList: null,
+    init: function (view,model) {
+      this.view = view
+      this.model = model
+      this.messageList = view.querySelector('#messageList')
+      this.form = document.querySelector('#postMessageFrom')
+      this.model.init()
+      this.loadMessage()
+      this.bindEvents()
 
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
-
-var query = new AV.Query('Messages');
-query.find().then(function (result) {
-    let arr = result.map((item)=>item.attributes)
-    arr.forEach((item) => {
+    },
+    
+    loadMessage: function () {
+      this.model.fetch().then(
+          (result) => {
+            let arr = result.map((item) => item.attributes)
+            arr.forEach((item) => {
+              let li = document.createElement('li');
+              li.innerHTML = `${item.name}:${item.content}`
+              this.messageList.appendChild(li)
+            })
+          },
+          function (error) {
+            alert('提交失败，请改天再来')
+            // 异常处理
+          }).then(() => {}, (error) => {
+          console.log(error)
+        })
+    },
+    bindEvents: function () {
+      
+      this.form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        this.saveMessage()
+        
+      })
+    },
+    saveMessage:function(){
+      let myForm = this.form
+      let content = myForm.querySelector('input[name=content]').value;
+      let name = myForm.querySelector('input[name=name]').value;
+      this.model.save(name,content).then(function (object) {
         let li = document.createElement('li');
-        li.innerHTML = item.content
+        li.innerHTML = `${object.attributes.name}:${object.attributes.content}`
         messageList.appendChild(li)
-    })
-}, function (error) {
-  alert('提交失败，请改天再来')
-  // 异常处理
-}).then(() =>{},(error) =>{
-  console.log(error)
-})
+        myForm.reset()
+      })
+    }
+  }
+  controller.init(view,model)
 
-let myForm = document.querySelector('#postMessageFrom')
-myForm.addEventListener('submit',function(e){
-  e.preventDefault()
-  let content = myForm.querySelector('input[name=content]').value;
- //let content = '清华次'
-  var Message = AV.Object.extend('Messages');
-  var message = new Message();
-  message.save({
-    content: content
-  }).then(function(object) {
-    window.location.reload();
-  })
-})
-
-/*
-//创建TestObject表
-var TestObject = AV.Object.extend('TestObject');
-//在表中创建一行数据
-var testObject = new TestObject();
-//数据内容是words: 'Hello World!'，然后保存
-testObject.save({
-  words: '青花瓷'
-}).then(function(object) {
-  alert('LeanCloud Rocks!');
-})
-*/
+}.call()
