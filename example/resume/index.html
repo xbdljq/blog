@@ -55,15 +55,15 @@
     </div>
     <!-- 背景图 -->
     <div class="banner">
-          
-        
+
+
         <!-- 遮罩层 -->
         <div class="mask"></div>
     </div>
 
     <!-- 个人介绍卡片 -->
     <main>
-       
+
 
         <div data-x id="siteAbout" class="userCard">
             <div class="pictureAndText clearfix">
@@ -163,51 +163,52 @@
     <section data-x id="siteWorks" class="portfolio">
         <h2>作品集</h2>
         <div id="mySlides">
-             <!-- 轮播图 -->
-             <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <img src="img/3.jpg" alt="" class="swiper-slide">
-                        <img src="img/4.jpg" alt="" class="swiper-slide">
-                        <img src="img/5.jpg" alt="" class="swiper-slide">
-                        <!-- <div class="swiper-slide" style="background:red">Slide 1</div>
-                        <div class="swiper-slide" style="background:blue">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div> -->
-                    </div>
-                    <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination"></div>
-        
-                    <!-- 如果需要导航按钮 -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-        
-                    <!-- 如果需要滚动条 -->
-                    <!-- <div class="swiper-scrollbar"></div> -->
+            <!-- 轮播图 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img src="img/3.jpg" alt="" class="swiper-slide">
+                    <img src="img/4.jpg" alt="" class="swiper-slide">
+                    <img src="img/5.jpg" alt="" class="swiper-slide">
                 </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
 
         </div>
 
     </section>
+    <section>
+        <h2>留言</h2>
+        <ol id="messageList">
+            <li></li>
+        </ol>
+        <form id="postMessageFrom" style="width:700px;margin:50px auto">
+            <input type="text" name="content">
+            <input type="submit" value="提交">
+        </form>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-       <!-- 存储服务 -->
-<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
-<!-- 实时消息服务 -->
-<script src="//cdn.jsdelivr.net/npm/leancloud-realtime@4.2.1/dist/realtime.browser.min.js"></script>
+    <!-- 存储服务 -->
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
+    <!-- 实时消息服务 -->
+    <script src="//cdn.jsdelivr.net/npm/leancloud-realtime@4.2.1/dist/realtime.browser.min.js"></script>
     <script src="./js/main.js"></script>
-   <script src="./js/init-swiper.js"></script>
-   <script src="./js/auto-slide-up.js"></script>
-   <script src="./js/sticky-topbar.js"></script>
-   <script src="./js/smoothly-navigation.js"></script>
-   <script src="./js/message.js"></script>
+    <script src="./js/init-swiper.js"></script>
+    <script src="./js/auto-slide-up.js"></script>
+    <script src="./js/sticky-topbar.js"></script>
+    <script src="./js/smoothly-navigation.js"></script>
+    <script src="./js/message.js"></script>
 
 
     <script>
-        
-
         window.onload = function () {
             setTimeout(function () {
                 siteWelcome.classList.remove('active');
             }, 300)
-          
+
             let liTags = document.querySelectorAll('nav>.menu>li');
             for (let i = 0; i < liTags.length; i++) {
                 liTags[i].onmouseenter = function (e) {
@@ -218,8 +219,6 @@
                 }
             }
         }
-
-        
     </script>
 
 </body>
