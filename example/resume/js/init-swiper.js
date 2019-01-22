@@ -13,11 +13,11 @@
                 prevEl: '.swiper-button-prev',
             },
         },
-        init:function(view){
+        init: function(view){
             this.view = view
             this.initSwiper()
         },
-        initSwiper:function(){
+        initSwiper: function(){
             this.swiper = new Swiper(
                 view.querySelector('.swiper-container'), 
                 this.swiperOptions
