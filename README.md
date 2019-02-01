@@ -17,3 +17,6 @@ https://xbdljq.github.io/blog/example/pikaqiu/index.html
 #### 一个轮播图原理demo
 https://xbdljq.github.io/blog/example/slide/index.html
 
+### 会动的个人简历
+https://xbdljq.github.io/blog/example/resume2/index.html
+
