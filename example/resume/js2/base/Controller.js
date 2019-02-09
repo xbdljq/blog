@@ -1,6 +1,6 @@
 window.Controller = function(options){
     var init = options.init
-    this.bindEvents = options.bindEvents
+    bindEvents = options.bindEvents
 
     return {
         view:null,
@@ -9,8 +9,9 @@ window.Controller = function(options){
             this.view = view
             this.model = model
             this.model.init()
-            this.bindEvents()
             init.call(this,view,model)
+            options.bindEvents.call(this)
+           
         }
     }
 }

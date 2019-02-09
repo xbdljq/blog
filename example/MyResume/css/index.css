@@ -1,0 +1,452 @@
+body {
+    height: 100vh;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+    color: #333333;
+    font-size: 14px;
+}
+
+.showState {
+    display: block !important;
+}
+
+.hideState {
+    display: none;
+}
+
+.navLeft {
+    width: 200px;
+    background: #424f63;
+    color: #ffffff;
+    height: 100vh;
+
+}
+
+.topNav {
+    display: none;
+    background: #424f63;
+    color: #ffffff;
+    text-align: left;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+.topNav .navTitle {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.topNav .navUl {
+    display: none;
+    height: 100vh;
+}
+
+.topNav .navUl li {
+    padding: 0 20px;
+    line-height: 50px;
+    font-size: 14px;
+
+}
+
+.navLeft .navUl li {
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px;
+}
+
+.navUl li:hover {
+    background: #353f4f;
+    color: #6dc5a3;
+}
+
+.navUl li.active {
+
+    background: #353f4f;
+    color: #6dc5a3;
+}
+
+.logo {
+    text-align: center;
+    line-height: 60px;
+}
+
+.contentRight {
+    background: #eff0f4;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.contentRight section {
+    min-height: 100vh;
+    display: none;
+    overflow: auto;
+}
+
+.section1 {}
+
+.myInfo {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.5;
+    margin-right: 60px;
+}
+
+.section1 .download {
+    font-size: 16px;
+    width: 160px;
+    text-align: center;
+    background: #5ab6df;
+    color: #ffffff;
+    border-radius: 10px;
+    border-bottom: 5px solid #51a3c8;
+}
+
+.section1 .myImg img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 30px;
+
+}
+
+.myImg img {
+    width: 100%;
+
+}
+.section1 .topInfo {
+    line-height: 50px;
+    font-size: 22px;
+    margin: 20px;
+}
+
+.section1 .baseInfo {
+    flex-wrap: wrap;
+}
+
+.section1 .baseInfo div {
+    width: 50%;
+    line-height: 30px;
+}
+
+.section1 .baseInfo div span {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+.cardBox {
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.cardHead {
+    border-bottom: 1px solid #dddddd;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+
+.cardContent {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.topTitle {
+    text-align: center;
+    font-size: 20px;
+    line-height: 60px;
+    margin-bottom: 10px;
+
+}
+
+.skillUl {
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.skillUl li {
+    padding: 0 20px 16px 0;
+    width: 50%;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.skillUl li div:nth-of-type(1) {
+    border-left: 4px solid#6dc5a3;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.section3 .cardBox,
+.section4 .cardBox {
+    font-size: 14px;
+}
+
+.section3 .cardBox .cardHead,
+.section4 .cardBox .cardHead {
+    font-size: 14px;
+}
+.section3 .cardBox .cardHead div:nth-of-type(1){
+    width: 50%;
+}
+.section3 .cardBox .cardHead div:nth-of-type(2){
+    width: 28%;
+}
+.section3 .cardBox .cardHead div:nth-of-type(3){
+    width: 22%;
+    text-align: right
+}
+
+.section3 .cardBox .cardContent,
+.section4 .cardBox .cardContent {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.section3 .cardBox .cardContent p,
+.section4 .cardBox .cardContent p {
+    text-indent: 2em;
+}
+
+.section3 .cardBox .cardContent>div,
+.section4 .cardBox .cardContent>div {
+    margin-bottom: 10px;
+}
+
+.minProject {
+    flex-wrap: wrap;
+    align-items: flex-start
+}
+
+.minProject li {
+    width: 49%;
+}
+
+.minProject li:nth-of-type(odd) {
+    margin-right: 2%;
+}
+
+.contact {
+    width: 320px;
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.contact span {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.detail {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.detail a {
+    background: #5cb85c;
+    color: #ffffff;
+    border: 1px solid #5cb85c;
+    border-radius: 5px;
+    padding: 3px 15px;
+}
+
+@media screen and (max-width: 900px) {
+    .navLeft {
+        display: none
+    }
+
+    .contentRight {
+        padding-top: 60px;
+        /* //padding-bottom: 40px; */
+    }
+    .download{
+        display: none;
+    }
+
+    .topNav {
+        display: block;
+    }
+
+    .topInfo {
+        flex-wrap: wrap;
+    }
+
+    .downloadBox {
+        padding-left: 150px;
+        width: 100%;
+    }
+    .contentRight section {
+        display: block !important;
+        min-height: auto;
+    }
+    .section5{
+        padding-bottom: 50px;
+    }
+
+    
+
+}
+@media screen and (max-width: 600px) {
+    .navLeft {
+        display: none
+    }
+
+    .contentRight {
+        padding-top: 60px;
+    }
+    .download{
+        display: none;
+    }
+
+    .topNav {
+        display: block;
+    }
+
+    .topInfo {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .topInfo p{
+        margin: 0
+    }
+    .topInfo>div{
+        width: 100%;
+        text-align: center;
+    }
+    .topInfo>div img{
+        margin: 0 auto;
+    }
+
+    .downloadBox {
+        display: none
+    }
+
+    .contentRight section {
+        display: block !important;
+        min-height: auto;
+    }
+    .section1 .baseInfo {
+        /* flex-wrap: nowrap ; */
+    }
+    .section1 .baseInfo div {
+        width: auto;
+        margin-right: 30px;
+        line-height: 30px;
+    }
+    
+    .section1 .baseInfo div span:nth-of-type(1) {
+        display: none;
+        width: 120px;
+        text-align: right;
+        margin-right: 10px;
+    }
+    .skillUl li{
+        width: 100%;
+    }
+    .section3 .cardHead{
+        flex-wrap: wrap;
+        line-height: 1.5;
+    }
+    .section3 .cardHead>div{
+        width: 100% !important;
+        text-align: left !important;
+    }
+    .minProject li{
+        width: 100%;
+    }
+
+
+}
+
+/*
+ 样式将只应用于打印 */
+
+@media print {
+
+    html, body {
+        height: inherit;
+    }
+    .topNav,.other,.navLeft,.downloadBox{
+        display: none !important;
+    }
+    .section1 .cardBox{
+        margin: 0;
+    }
+
+    .contentRight {
+        height: inherit !important;
+    }
+
+    .topNav {
+        display: block;
+    }
+
+    .topInfo {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .topInfo p{
+        margin: 0
+    }
+    .topInfo>div{
+        width: 100%;
+        text-align: center;
+    }
+    .topInfo>div img{
+        margin: 0 auto;
+    }
+
+    .contentRight section {
+        display: block !important;
+        min-height: auto;
+    }
+    .section1 .baseInfo {
+        /* flex-wrap: nowrap ; */
+    }
+    .section1 .baseInfo div {
+        width: auto;
+        margin-right: 30px;
+        line-height: 30px;
+    }
+    
+    .section1 .baseInfo div span:nth-of-type(1) {
+        display: inline;
+        /* display: none; */
+        /* width: 120px; */
+        /* text-align: right; */
+        margin-right: 10px;
+    }
+    .skillUl li{
+        width: 100%;
+    }
+    .section3 .cardHead{
+        flex-wrap: wrap;
+        line-height: 1.5;
+    }
+    .section3 .cardHead>div{
+        /* width: 100% !important; */
+        text-align: left !important;
+    }
+    .minProject li{
+        width: 100%;
+    }
+    .topTitle{
+        line-height: 50px
+    }
+}
