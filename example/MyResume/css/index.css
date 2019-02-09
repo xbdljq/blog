@@ -108,8 +108,8 @@ body {
     border-bottom: 5px solid #51a3c8;
 }
 
-.section1 .myImg img {
-    width: 120px;
+.section1 .myImg {
+    
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
@@ -118,7 +118,8 @@ body {
 }
 
 .myImg img {
-    width: 100%;
+    width: 120px;
+    border-radius: 50%;
 
 }
 .section1 .topInfo {
