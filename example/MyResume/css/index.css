@@ -383,7 +383,7 @@ body {
     html, body {
         height: inherit;
     }
-    .topNav,.other,.navLeft,.downloadBox{
+    .topNav,.navLeft,.downloadBox{
         display: none !important;
     }
     .section1 .cardBox{
@@ -449,5 +449,8 @@ body {
     }
     .topTitle{
         line-height: 50px
+    }
+    .section5{
+        padding-bottom: 30px;
     }
 }
